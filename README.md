@@ -17,6 +17,19 @@ For the execution of our solution we are going to use different functions to bin
 `````
 (read-csv filename-in)
 (eliminate-bad-movies filename-in rating)
+(getId dataset)
+(eliminate-bad-movies-from-dataset dataset-fileName ratings-fileName rating) ;The most important function
+(main f ) ;main to execute 
+
+;;; Racket functions
+string->number
+equal?
+list
+empty?
+append
+car
+cdr
+`````
 Detailed description of the problem, including all methods and formulas you use
 Instructions on how to compile, execute and use your program
 Add screenshots of your program running to aid in the explanations
