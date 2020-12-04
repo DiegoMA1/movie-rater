@@ -71,17 +71,26 @@ Created by:
 (define (get-movie-name row)
   (car(cdr(cdr(cdr row))))
 )
-  
-(define (main f )
-  " Eliminates al the bad movies from dataset above a specific rating (In this case,
-    as we are going to be picky, we want all above rating 8)"
-  (define great-movies (eliminate-bad-movies-from-dataset "data/movies_metadata.csv" "data/ratings_prom.csv" 7))
+(define (get-popularity row)
+  (car(cdr(cdr(cdr(cdr row)))))
+)
+(define (get-revenue row)
+  (car(cdr(cdr(cdr(cdr(cdr row))))))
+)
+(define (create-new-dataset dataset)
   (let loop
-       ([great-movies great-movies]
+       ([great-movies dataset]
         [result empty])
         (if (empty? great-movies)
             result
             (loop
                 (cdr great-movies)
-                (append result (list (get-movie-name (car great-movies)))))))
+                (append result (list (get-movie-name (car great-movies)) (getId (car great-movies)) (get-popularity (car great-movies)) (get-revenue (car great-movies))))))))
+
+(define (main file1 file2)
+  " Eliminates al the bad movies from dataset above a specific rating (In this case,
+    as we are going to be picky, we want all above rating 8)"
+  (define great-movies (eliminate-bad-movies-from-dataset file1 file2 8))
+
+  (create-new-dataset great-movies)
 )
