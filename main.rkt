@@ -71,11 +71,26 @@ Created by:
 (define (get-movie-name row)
   (car(cdr(cdr(cdr row))))
 )
+(define (get-movie-language row)
+    (car(cdr(cdr row))))
+
+(define (language-count language great-movies)
+    (let loop
+        ([great-movies great-movies]
+        [n 0])
+        (if (empty? great-movies)
+            n
+            (loop
+                (cdr great-movies)
+                (if (string=? (get-movie-language (car great-movies)) language)
+                    (add1 n)
+                    n
+                )))))
   
 (define (main f )
   " Eliminates al the bad movies from dataset above a specific rating (In this case,
-    as we are going to be picky, we want all above rating 8)"
-  (define great-movies (eliminate-bad-movies-from-dataset "data/movies_metadata.csv" "data/ratings_prom.csv" 7))
+    as we are going to be picky, we want all above rating 8.9)"
+  (define great-movies (eliminate-bad-movies-from-dataset "data/movies_metadata.csv" "data/ratings_prom.csv" 8.9))
   (let loop
        ([great-movies great-movies]
         [result empty])
@@ -84,4 +99,6 @@ Created by:
             (loop
                 (cdr great-movies)
                 (append result (list (get-movie-name (car great-movies)))))))
+(language-count "en" great-movies)
+
 )
