@@ -10,9 +10,6 @@ Created by:
 |#
 
 #lang racket
-;(require "03_csv_data.rkt"
- ;        )
-;(provide read-csv)
 
 (define (read-csv filename-in)
     " Read the data contained in the file provided
@@ -46,7 +43,8 @@ Created by:
 
 
 (define (getId dataset)
-      (car dataset))
+      (car dataset)
+)
 
 (define (eliminate-bad-movies-from-dataset dataset-fileName ratings-fileName rating)
     (define good-movies (eliminate-bad-movies ratings-fileName rating))
@@ -70,10 +68,20 @@ Created by:
                                           (list datasetRow)
                                           (good-movies-row-loop datasetRow (cdr good-movies))))))))))
 
-
-                 
+(define (get-movie-name row)
+  (car(cdr(cdr(cdr row))))
+)
+  
 (define (main f )
-
-  " Eliminates al the bad movies (above a specific rating) "
-    (eliminate-bad-movies-from-dataset "data/movies_metadata.csv" "data/ratings_prom.csv" 8.9)
+  " Eliminates al the bad movies from dataset above a specific rating (In this case,
+    as we are going to be picky, we want all above rating 8)"
+  (define great-movies (eliminate-bad-movies-from-dataset "data/movies_metadata.csv" "data/ratings_prom.csv" 7))
+  (let loop
+       ([great-movies great-movies]
+        [result empty])
+        (if (empty? great-movies)
+            result
+            (loop
+                (cdr great-movies)
+                (append result (list (get-movie-name (car great-movies)))))))
 )
