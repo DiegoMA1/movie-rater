@@ -7,8 +7,6 @@ Gil Echeverria
 
 #lang racket
 
-(provide read-csv)
-
 (define (read-csv filename-in)
     " Read the data contained in the file provided
     Return a list of lists with the data "
