@@ -1,5 +1,3 @@
-
-
 # Proposal
 
 Our project will be focused on data analysis, we’ve been researching some interesting datasets on the internet with a lot of information to analyze and interpret. We want to be able to interpret all the data and use this comprehension to predict possible futures and to understand current behaviors.
@@ -14,7 +12,7 @@ Fortunately, the data and its interpretation give us the ability to predict. Thi
 
 For the execution of our solution we are going to use different functions to bind data and interprate the results. Our functions are:
 
-`````
+```Racket
 (read-csv filename-in)
 (eliminate-bad-movies filename-in rating)
 (getId dataset)
@@ -29,7 +27,7 @@ empty?
 append
 car
 cdr
-`````
+```
 Detailed description of the problem, including all methods and formulas you use
 Instructions on how to compile, execute and use your program
 Add screenshots of your program running to aid in the explanations
@@ -49,31 +47,32 @@ movieId - A unique identifier for each movie.
 rating - The rating given by the user for each movie.
 timestamp - The time when rating was recorded
 
-movies_metadata.csv:
-Budget
-Genre
-Homepage
-Id
-Keywords
-Original_language
-Original_title 
-Overview
-Popularity
-Production_companies
-Production_countries
-Rating
-Release_date
-Revenue
-Runtime
-Status ("Released" or "Rumored")
-Tagline
-Timestamp (the time when rating was recorded.)
-Title
-Vote_average
-Vote_count
+- movies_metadata.csv:
+- Budget
+- Genre
+- Homepage
+- Id
+- Keywords
+- Original_language
+- Original_title 
+- Overview
+- Popularity
+- Production_companies
+- Production_countries
+- Rating
+- Release_date
+- Revenue
+- Runtime
+- Status ("Released" or "Rumored")
+- Tagline
+- Timestamp (the time when rating was recorded.)
+- Title
+- Vote_average
+- Vote_count
+
 As well as other information as:
-keywords
-links
+- keywords
+- links
 
 It is intended tha using this data we will have a vast spectrum of information from which we will be able to not only measure some success rate of a given input but also even more like giving movie recommendations by guessing users’ test.
 Description of the functionality
