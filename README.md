@@ -1,3 +1,5 @@
+
+
 # Proposal
 
 Our project will be focused on data analysis, we’ve been researching some interesting datasets on the internet with a lot of information to analyze and interpret. We want to be able to interpret all the data and use this comprehension to predict possible futures and to understand current behaviors.
@@ -10,6 +12,15 @@ The rapid growth of data collection has led to a new era of information. Data is
 They are used to predict the rating or preference that a user would give to an item. Almost every major tech company has applied them in some form or the other: Amazon uses it to suggest products to customers, YouTube uses it to decide which video to play next on autoplay, and Facebook uses it to recommend pages to like and people to follow. Moreover, companies like Netflix and Spotify depend highly on the effectiveness of their recommendation engines for their business and success.
 Fortunately, the data and its interpretation give us the ability to predict. This is important because many organizations wish to have this ability in order to spend less and risk less.
 
+For the execution of our solution we are going to use different functions to bind data and interprate the results. Our functions are:
+
+`````
+(read-csv filename-in)
+(eliminate-bad-movies filename-in rating)
+Detailed description of the problem, including all methods and formulas you use
+Instructions on how to compile, execute and use your program
+Add screenshots of your program running to aid in the explanations
+Links to any additional libraries required
 
 # Explanation of solution
 

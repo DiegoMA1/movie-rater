@@ -39,17 +39,14 @@ Created by:
      [result empty])
     (if (empty? data)
         result
-        (if (< rating (string->number  (car (cdr (car data)))))
+        (if (< rating (string->number (car (cdr (car data)))))
             (loop (cdr data) (append result (list (car data))))
             (loop (cdr data) result ))))           
 )
 
 
 (define (getId dataset)
-  (if (< 13(length dataset))
-      (car(cdr(cdr(cdr(cdr(cdr(cdr (cdr (cdr (cdr (cdr (cdr (cdr (cdr dataset))))))))))))))
-      "0")
-)
+      (car dataset))
 
 (define (eliminate-bad-movies-from-dataset dataset-fileName ratings-fileName rating)
     (define good-movies (eliminate-bad-movies ratings-fileName rating))
@@ -78,5 +75,5 @@ Created by:
 (define (main f )
 
   " Eliminates al the bad movies (above a specific rating) "
-  (eliminate-bad-movies-from-dataset "data/movies_metadata.csv" "data/ratings_prom.csv" 8)
+    (eliminate-bad-movies-from-dataset "data/movies_metadata.csv" "data/ratings_prom.csv" 8.9)
 )
