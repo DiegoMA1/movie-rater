@@ -78,14 +78,32 @@ Created by:
   (car(cdr(cdr(cdr(cdr(cdr row))))))
 )
 (define (create-new-dataset dataset)
-  (let loop
-       ([great-movies dataset]
-        [result empty])
+    (let loop
+          ([great-movies dataset]
+            [result empty])
+            (if (empty? great-movies)
+                result
+                (loop
+                    (cdr great-movies)
+                    (append result (list (get-movie-name (car great-movies)) (getId (car great-movies)) (get-popularity (car great-movies)) (get-revenue (car great-movies))))))))
+
+
+
+(define (get-movie-language row)
+    (car(cdr(cdr row))))
+
+(define (language-count language great-movies)
+    (let loop
+        ([great-movies great-movies]
+        [n 0])
         (if (empty? great-movies)
-            result
+            n
             (loop
                 (cdr great-movies)
-                (append result (list (get-movie-name (car great-movies)) (getId (car great-movies)) (get-popularity (car great-movies)) (get-revenue (car great-movies))))))))
+                (if (string=? (get-movie-language (car great-movies)) language)
+                    (add1 n)
+                    n
+                )))))
 
 (define (main file1 file2)
   " Eliminates al the bad movies from dataset above a specific rating (In this case,
@@ -93,4 +111,6 @@ Created by:
   (define great-movies (eliminate-bad-movies-from-dataset file1 file2 8))
 
   (create-new-dataset great-movies)
+  ;(language-count "en" great-movies)
+
 )
