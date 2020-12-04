@@ -46,44 +46,37 @@ Created by:
 
 
 (define (getId dataset)
-  (car(cdr(cdr(cdr(cdr(cdr(cdr (cdr (cdr (cdr (cdr (cdr (cdr (cdr dataset)))))))))))))))
+  (if (< 13(length dataset))
+      (car(cdr(cdr(cdr(cdr(cdr(cdr (cdr (cdr (cdr (cdr (cdr (cdr (cdr dataset))))))))))))))
+      "0")
+)
 
-
-(define (eliminate-bad-movies-from-dataset dataset-fileName ratings-fileName)
-    (define good-movies (eliminate-bad-movies "data/ratings_prom.csv" 4))
-    (define dataset (read-csv "data/movies_metadata.csv"))
+(define (eliminate-bad-movies-from-dataset dataset-fileName ratings-fileName rating)
+    (define good-movies (eliminate-bad-movies ratings-fileName rating))
+    (define dataset (read-csv dataset-fileName))
     (let row-datset-loop
         ([good-movies good-movies]
          [dataset (cdr dataset)]
-         [good-moviesUntouched good-movies]
          [result empty])
         (if (empty? dataset)
             result
             (row-datset-loop
                  good-movies
                  (cdr dataset)
-                 good-moviesUntouched
                  (append result
                          (let good-movies-row-loop
-                             ([dataset dataset]
-                              [good-movies good-movies]
-                              [good-moviesUntouched good-moviesUntouched]
-                              [result result])
-
-
-
-                           
+                             ([datasetRow (car dataset)]
+                              [good-movies good-movies])
                                   (if (empty? good-movies)
-                                      ()
-                                      (if (equals? (string->number (getId (car dataset))) (car (car good-movies)))
-                                          (list (car dataset))
-                                          (good-movies-row-loop (cdr good-movies) (cdr dataset) datasetUntouched good-moviesUntouched result)
-                                          )
+                                      '()
+                                      (if (equal? (string->number (getId datasetRow))  (string->number (car (car good-movies))))
+                                          (list datasetRow)
+                                          (good-movies-row-loop datasetRow (cdr good-movies))))))))))
 
 
                  
 (define (main f )
-    " Eliminates al the bad movies (above rating 4) "
-  (define dataset (read-csv "data/movies_metadata.csv"))
-  (getId (car (cdr dataset)))
+
+  " Eliminates al the bad movies (above a specific rating) "
+  (eliminate-bad-movies-from-dataset "data/movies_metadata.csv" "data/ratings_prom.csv" 8)
 )
