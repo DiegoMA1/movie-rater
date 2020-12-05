@@ -82,8 +82,11 @@ File I/O: file writing and reading will be required to be used in the system sin
 # Instructions to compile
 
 It's important for the user to have the racket line tool installed.
+
 The user needs to have all the datasets downloads from this repository.
+
 Follow the next instructions to compile and run the program:
+
 ``````
 racket
 (enter! "main.rkt")
