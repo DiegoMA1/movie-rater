@@ -27,11 +27,8 @@ empty?
 append
 car
 cdr
+string=?
 ```
-Detailed description of the problem, including all methods and formulas you use
-Instructions on how to compile, execute and use your program
-Add screenshots of your program running to aid in the explanations
-Links to any additional libraries required
 
 # Explanation of solution
 
@@ -82,5 +79,21 @@ Recursion: the system is intended to be using recursion given that there are no 
 Lists: as the system is intended to be working with  lots of matrices, in order to do the operations required. Since racket has no kind of variables, any matrix data structure, lists of lists will be needed in order to handle the information given in the csv files. 
 File I/O: file writing and reading will be required to be used in the system since all the information needed is going to be obtained from csv files.
 
-Referencias:
+# Instructions to compile
+
+It's important for the user to have the racket line tool installed.
+The user needs to have all the datasets downloads from this repository.
+Follow the next instructions to compile and run the program:
+``````
+racket
+(enter! "main.rkt")
+(main "data/movie_metadata.csv" "data/ratings_prom.csv")
+``````
+# Screenshots
+
+<img src="./img/ss1.jpeg">
+<img src="./img/ss2.jpeg">
+
+# References
+
 Kaggle. (2017). The Movies Dataset. 15/10/2020, from Kaggle, Dataset: https://www.kaggle.com/rounakbanik/the-movies-dataset
